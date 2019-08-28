@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+    <body>
+        
+        <div class="phonenumber">+88 01700 000000</div>
+        
+        <!-- script -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+            var phonenumbers = [];
+            $(".phonenumber").each(function(i) {
+                phonenumbers.push($(this).text());
+                var newcontent = $(this).text().substr(0, $(this).text().length - 4)
+                $(this).text(newcontent);
+                $(this).bind("click", function() {
+                    if ($(this).text() == phonenumbers[i]) {
+                        $(this).text(phonenumbers[i].substr(0, phonenumbers[i].length - 4));
+                    } else {
+                    $(".phonenumber").each(function(x) {
+                        if ($(this).text() == phonenumbers[x]) {
+                           $(this).text(phonenumbers[x].substr(0, phonenumbers[x].length - 4));
+                        }
+                    });
+                    $(this).text(phonenumbers[i]);
+                    }
+                });
+              });
+            });
+        </script>
+    </body>
+</html>
